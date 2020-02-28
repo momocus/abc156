@@ -5,14 +5,14 @@ class Integer
   def factorial
     # 階乗 self!
     return 1 if self == 0
-    (1..self).inject{|result,item|result * item % MOD}
+    (1..self).inject(1){|result,item|result * item % MOD}
   end
 
   def permutation(r)
     # 順列 selfPr
     return 1 if self == 0
     s = self - r + 1
-    (s..self).inject{|result,item|result * item % MOD}
+    (s..self).inject(1){|result,item|result * item % MOD}
   end
 
   def combination(r)
@@ -32,7 +32,7 @@ class Integer
         res = (res * a) % MOD
       end
       a = a * a % MOD
-      n >>= 1 # n / 2
+      n >>= 1 # n / 2 (小数点以下切り捨て)
     end
     return res
   end
